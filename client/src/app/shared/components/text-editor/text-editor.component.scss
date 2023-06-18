@@ -1,0 +1,14 @@
+:host{
+    display: block;
+
+    ::ng-deep .editor{
+        .p-editor-content{
+            height: 300px;
+        }
+        &.error{
+            .p-editor-toolbar, .p-editor-content{
+                border-color: red;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@import "src/styles.scss";
+
+:host {
+    display: block;
+}
+
+.header {
+    background-color: $color-theme;
+}
+
+.icon-logo  {
+    width: 32px;
+    height: 32px;
+}

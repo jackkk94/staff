@@ -1,0 +1,6 @@
+<div class="list">
+    <app-user-card 
+    *ngFor="let user of users; let last=last"
+    [user]="user"
+    [class.mb-2]="!last"></app-user-card>
+</div>

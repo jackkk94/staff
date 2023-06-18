@@ -1,0 +1,16 @@
+:host{
+    .select ::ng-deep  {
+        .mat-form-field-flex {
+            background-color: rgba(grey,.8);
+            border-radius: 8px;
+        }
+
+        .mat-form-field-underline{
+            bottom: 0;
+        }
+        .mat-form-field-wrapper{
+            padding-bottom: 0;
+        }
+    }
+}
+

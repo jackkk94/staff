@@ -1,0 +1,16 @@
+<app-wrapper class="w-100">
+    <div class="app-title mb-2">Команда</div>
+    <div class="d-flex flex-wrap gap-3" *ngIf="(team$ | async)?.length && team$ | async as team; else noData">
+        <div *ngFor="let user of team">
+            <a [routerLink]="getlink(user.id)" class="link-dark">
+                <app-user-photo [link]="user.photoUrl"></app-user-photo>
+                <div class="user-name mt-1" [matTooltip]="user.fullName" matTooltipClass="text-md">{{user.fullName}}</div>
+            </a>
+        </div>
+    </div>
+    <ng-template #noData>
+        <div class="d-flex align-items-center justify-content-center">
+            <h5>Сотрудник не привязан ни к одной команде</h5>
+        </div>
+    </ng-template>
+</app-wrapper>

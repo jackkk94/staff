@@ -1,0 +1,11 @@
+<div class="row py-3" *ngIf="!(loaderService.isLoading | async)">
+    <div class="col-md-8">
+        <app-news-widget [count]="6"></app-news-widget>
+    </div>
+   
+    <div class="col-md-3">
+        <app-new-employees-widget></app-new-employees-widget>
+        
+        <app-birthday-persons class="mt-4 mb-3"></app-birthday-persons>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<textarea *ngIf="!readonly; else Text"
+    class="input-field w-100"
+    [class.with-errors]="control.errors && control.dirty"
+    [value]="value" 
+    (change)="handleChange($event)" 
+    (keyup)="handleChange($event)">
+</textarea>
+
+<ng-template #Text>
+    <div class="text-body">{{value}}</div>
+</ng-template>
+
+<app-control-required *ngIf="!readonly && notFilled"></app-control-required>

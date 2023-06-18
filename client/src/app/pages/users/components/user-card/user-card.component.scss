@@ -1,0 +1,12 @@
+:host{
+    width: 100%;
+    display: grid;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 32px 16px;
+    grid-template-columns: 0.33fr 0.33fr 0.33fr;
+}
+
+.position{
+    max-width: 200px;
+}

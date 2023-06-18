@@ -1,0 +1,7 @@
+<h3 class="mb-3" *ngIf="title">{{title}}</h3>
+
+<div class="d-flex flex-wrap gap-3">
+    <app-new-card *ngFor="let new of lastNews$ | async" class="new" [data]="new" [link]="'/company-news/'+new.id.toString()"></app-new-card>
+</div>
+
+<div class="link text-md mt-3" routerLink="/company-news">Смотреть все новости</div>

@@ -1,0 +1,8 @@
+<mat-form-field class="select" appearance="fill">
+    <mat-label>{{label}}</mat-label>
+    <mat-select [formControl]="getControl(control.control)" panelClass="example-panel-red">
+        <mat-option *ngFor="let item of data" [value]="item.id">
+            {{item.label}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

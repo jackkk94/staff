@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-end" *ngIf="canEdit$ | async">
+    <div class="edit-link text-primary fs-5 my-2" (click)="handleEditClick()" *ngIf="!editMode">Редактировать</div>
+</div>
+<div class="row" *ngIf="initialValue$ | async as user">
+    <div class="text-center col-md-3">
+        <app-user-photo [link]="user.photoUrl" size="big"></app-user-photo>
+        <div class="fw-bold text-uppercase fs-3 my-3">
+            {{user.fullName}}
+        </div>
+        <div class="fs-5">Офис: <span class="text-gray-dark">{{user.office.name}}</span></div>
+        <div class="fs-5">Место <span class="text-gray">{{user.place}}</span></div>
+    </div>
+    <div class="col-md-9">
+        <app-wrapper class="flex-row gap-5 w-100">
+            <div class="info-block">
+                <div class="app-title mb-2">Основная информация</div>
+                <app-data-row label="Должность">{{user.position.label}}</app-data-row>
+                <app-data-row label="Проект">{{user.project.name}}</app-data-row>
+                <app-data-row label="Город">{{user.city.label}}</app-data-row>
+                <app-data-row label="Дата рождения">
+                    <div *ngIf="!editMode">  {{user.birthday | appDate}}</div>
+                    <app-datepicker *ngIf="editMode" [formControl]="form.controls.birthday"></app-datepicker>
+                  
+                </app-data-row>
+                <app-data-row label="Дата приёма">{{user.startDate | appDate}}</app-data-row>
+                <app-data-row label="О себе">
+                    <app-textbox [formControl]="form.controls.info" [readonly]="!editMode"></app-textbox>
+                </app-data-row>
+            </div>
+
+            <div class="info-block">
+                <div class="app-title mb-2">Контактные данные</div>
+                <app-data-row class="mb-2" label="Рабочий телефон">
+                    <input-control [formControl]="form.controls.phone" [readonly]="!editMode"></input-control>
+                </app-data-row>
+                <app-data-row label="Почта">
+                    <input-control *ngIf="editMode" [formControl]="form.controls.email"
+                        [readonly]="!editMode"></input-control>
+                    <a class="link-dark" href="" *ngIf="!editMode">
+                        {{form.controls.email.value}}
+                    </a>
+                </app-data-row>
+            </div>
+        </app-wrapper>
+
+        <app-project-team [id]="user.project.id" class="my-4"></app-project-team>
+    </div>
+</div>
+
+<div class="d-flex justify-content-end py-2 mt-2 gap-2" *ngIf="editMode">
+    <button type="button" class="btn btn-outline-secondary btn-lg" (click)="cancel()">Отменить</button>
+    <button type="button" [disabled]="form.invalid" class="btn btn-success btn-lg" (click)="save()">Сохранить</button>
+</div>

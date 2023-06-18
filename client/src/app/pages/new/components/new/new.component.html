@@ -1,0 +1,49 @@
+<a routerLink="/company-news" class="back mt-3">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-back" fill="currentColor" class="icon-back bi bi-arrow-left"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+    </svg>
+    Вернуться</a>
+
+
+    <div class="mt-3">
+        <h1 *ngIf="!isEditMode" class="mb-3">{{ isCreateMode ? 'Создание новости' : form.controls.title.value}}</h1>
+        <input-control *ngIf="!isViewMode" [formControl]="form.controls.title" placeholder="Введите название новости"
+            class="w-50"></input-control>
+    </div>
+
+    <button type="button" *ngIf="(initialValue$ | async) && isViewMode && canEdit((initialValue$ | async), (authService.currentUser$ | async))" class="btn btn-outline-primary mt-2"
+        (click)="handleEditClick()">Редактировать</button>
+
+    <div class="author d-flex align-items-center my-4" *ngIf="!isCreateMode">
+        <ng-container *ngIf="initialValue$ | async as data">
+            <a class="link-dark me-3" href="">
+                <app-user-photo size="small" [link]="data.author.photoUrl"></app-user-photo>
+            </a>
+    
+            <a class="link-dark" href="">{{data.author.fullName}}</a>
+            <span class="mx-4">|</span>
+            <div>{{data.created | appDate}}</div>
+
+            <span *ngIf="isViewMode" class="mx-4">|</span>
+            <app-tag *ngIf="isViewMode">{{data.category.label}}</app-tag>
+        </ng-container>
+    </div>
+
+    <app-select *ngIf="!isViewMode" class="filter d-flex me-4 mt-2" label="Категория" [data]="categories$ | async"
+    [formControl]="form.controls.category"></app-select>
+
+    <h5 class="mt-3">Превью новости</h5>
+    <app-textbox placeholder="Введите превью новости" class="d-block mt-2" [formControl]="form.controls.summary"
+        [readonly]="isViewMode"></app-textbox>
+
+    <h5 class="mt-2">Описание новости</h5>
+    <app-text-editor placeholder="Введите описание новости" class="mt-2" [control]="form.controls.description"
+        [readonly]="isViewMode"></app-text-editor>
+
+    <div class="d-flex justify-content-end py-2 mt-2 gap-2" *ngIf="!isViewMode">
+        <button type="button" class="btn btn-outline-secondary btn-lg" (click)="cancel()">Отменить</button>
+        <button type="button" class="btn btn-success btn-lg"
+            (click)="submit()">Сохранить</button>
+    </div>

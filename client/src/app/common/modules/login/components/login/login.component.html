@@ -1,0 +1,8 @@
+<div class="w-25 d-flex flex-column gap-3">
+    <h2 class="text-center">Вход</h2>
+    <input-control [formControl]="form.controls.login" placeholder="Введите логин:"></input-control>
+    <input-control [formControl]="form.controls.password" placeholder="Введите пароль:"></input-control>
+    <button type="button" class="btn btn-primary btn-lg"
+            (click)="submit()"
+            [disabled]="form.invalid">Войти</button>
+</div>

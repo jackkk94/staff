@@ -1,0 +1,9 @@
+@import "src/styles.scss";
+
+:host {
+    display: block;
+}
+
+.footer {
+    height: $footer-height;
+}

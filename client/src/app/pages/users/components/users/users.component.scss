@@ -1,0 +1,34 @@
+$filters-height: 60px;
+$title-height: 35px;
+$pagination-height: 65px;
+$list-heigth: calc(100% - $filters-height - $title-height - $pagination-height);
+
+:host {
+    display: block;
+    height: 100%;
+}
+
+.filter {
+    display: flex;
+    width: 200px;
+}
+
+.reset-all {
+    display: inline-block;
+    font-weight: bold;
+    cursor: pointer;
+    width: 200px;
+}
+
+.list {
+    height: $list-heigth;
+    overflow: overlay;
+    display: block;
+}
+
+.noData {
+    height: calc($list-heigth + $pagination-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

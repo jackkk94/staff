@@ -1,0 +1,21 @@
+<h3 class="mt-2">Сотрудники компании</h3>
+<div class="row align-items-center">
+    <app-filter-by-name class="col-md-5" [formControl]="formFilters.controls.name"></app-filter-by-name>
+    <ng-container *ngIf="filterData$ | async as filterData">
+        <app-multiselect class="filter me-4" label="Город" [data]="filterData.cities"
+            [formControl]="formFilters.controls.city"></app-multiselect>
+        <app-multiselect class="filter me-4" label="Должность" [data]="filterData.positions"
+            [formControl]="formFilters.controls.position"></app-multiselect>
+    </ng-container>
+
+    <div class="reset-all" (click)="resetFilters()">Сбосить фильтры</div>
+</div>
+
+<ng-container *ngIf="(users$ | async)?.length && users$ | async as users; else noData">
+    <app-user-list class="list" [users]="users"></app-user-list>
+</ng-container>
+
+<app-pagination [pageSize]="take" [length]="total$ | async" (changed)="onPaginationChange($event)"></app-pagination>
+<ng-template #noData>
+    <h3 class="noData" *ngIf="!(loaderService.isLoading | async)">Данные отсутствуют</h3>
+</ng-template>

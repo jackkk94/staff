@@ -1,0 +1,6 @@
+<div class="d-flex flex-wrap gap-3">
+    <app-new-card *ngFor="let new of data" 
+    class="new"
+    [data]="new" 
+    [link]="new.id.toString()"></app-new-card>
+</div>

@@ -1,0 +1,19 @@
+:host {
+    display: block;
+}
+
+$max-height: 460px;
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    gap: 8px;
+    max-height: $max-height;
+    overflow-y: overlay;
+}
+
+.birthday {
+    display: inline-flex;
+    border: 1px solid;
+    border-radius: 8px;
+}

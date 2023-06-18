@@ -1,0 +1,25 @@
+<div class="d-flex align-items-center">
+    <a [routerLink]="link">
+        <app-user-photo [link]="user.photoUrl"></app-user-photo>
+    </a>
+
+    <div class="ms-3">
+        <a [routerLink]="link" class="text-body fs-5">{{user.fullName}}</a>
+        <div class="text-secondary fs-6 position">{{user.position.label}}</div>
+    </div>
+</div>
+<div>
+    <div>
+        <label>Моб. телефон:</label>
+        <span>{{user.phone}}</span>
+    </div>
+    <div>
+        <label>Email:</label>
+        <span>{{user.email}}</span>
+    </div>
+</div>
+
+<div>
+    <label>Город:</label>
+    <span>{{user.city.label}}</span>
+</div>

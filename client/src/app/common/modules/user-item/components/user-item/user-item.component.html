@@ -1,0 +1,6 @@
+<app-user-photo class="cursor-pointer" [routerLink]="link" [link]="user.photoUrl"></app-user-photo>
+<div class="info text-gray-dark cursor-pointer mt-2" [matTooltip]="user.fullName" matTooltipClass="text-md"
+    [routerLink]="link" aria-label="">
+    {{user.fullName}}</div>
+<div class="info text-gray mt-2" [matTooltip]="user.position.label" matTooltipClass="text-md" aria-label="">{{user.position.label}}
+</div>

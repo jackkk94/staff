@@ -1,0 +1,15 @@
+:host{
+    display: block;
+    padding-top: 16px;
+}
+
+.info-block{
+    flex-basis: 50%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-link{
+    cursor: pointer;
+}

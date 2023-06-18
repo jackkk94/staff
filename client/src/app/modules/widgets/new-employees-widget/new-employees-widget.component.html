@@ -1,0 +1,15 @@
+<h3 class="mb-3" *ngIf="title">{{title}}</h3>
+
+<app-wrapper class="wrapper w-100">
+    <div class="inner"
+        *ngIf="(newEmpployees$ | async)?.length &&  newEmpployees$ | async as newEmpployees; else noData">
+        <app-user-item *ngFor="let user of newEmpployees; let last=last" [user]="user"
+            [class.mb-2]="!last"></app-user-item>
+    </div>
+
+    <ng-template #noData>
+        <div class="d-flex align-items-center justify-content-center">
+            <h5 class="m-0">Новые сотрудники отсутствуют :(</h5>
+        </div>
+    </ng-template>
+</app-wrapper>

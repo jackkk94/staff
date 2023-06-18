@@ -1,0 +1,8 @@
+<app-wrapper>
+    <div class="card-body">
+        <h5 class="card-title"><a class="link-dark" [routerLink]="link">{{data.title}}</a></h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{data.created | appDate}}</h6>
+        <p class="card-text">{{data.summary}}</p>
+        <app-tag>{{data.category.label}}</app-tag>
+    </div>
+</app-wrapper>

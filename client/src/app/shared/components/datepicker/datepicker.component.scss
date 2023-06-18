@@ -1,0 +1,29 @@
+:host {
+    & ::ng-deep {
+        .mat-form-field-infix {
+            display: flex;
+        }
+
+        .mat-form-field, .mat-form-field-label-wrapper{
+            & .mat-form-field-label, &.mat-focused .mat-form-field-label {
+                color: black;
+            }
+        }
+        
+        .mat-form-field-underline{
+            display: none;
+        }
+
+        .mat-form-field-appearance-fill {
+            .mat-form-field-flex{
+                background-color: transparent;
+                border-radius: 12px;
+                border: 1px solid;
+            }
+        }
+        .mat-datepicker-toggle-default-icon {
+            fill: black;
+        }
+       
+    }
+}

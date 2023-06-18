@@ -1,0 +1,21 @@
+<h3 class="mt-2">Новости компании</h3>
+<div class="row align-items-center">
+    <app-filter-by-name class="col-md-5" [formControl]="formFilters.controls.name"></app-filter-by-name>
+
+    <app-multiselect class="filter me-4" label="Категории" [data]="filterByCategoriesData$ | async"
+        [formControl]="formFilters.controls.newCategories"></app-multiselect>
+
+    <div class="reset-all" (click)="resetFilters()">Сбосить фильтры</div>
+    <button *ngIf="canCreate$ | async" type="button" class="btn btn-success col-md-1 ms-md-auto"
+        (click)="create()">Создать </button>
+</div>
+
+<ng-container *ngIf="(news$ | async)?.length && news$ | async as news; else noData">
+    <app-news-list class="list p-4" [data]="news"></app-news-list>
+</ng-container>
+
+<app-pagination [pageSize]="take" [length]="total$ | async" (changed)="onPaginationChange($event)"></app-pagination>
+
+<ng-template #noData>
+    <h3 class="noData"  *ngIf="!(loaderService.isLoading | async)">Данные отсутствуют</h3>
+</ng-template>
